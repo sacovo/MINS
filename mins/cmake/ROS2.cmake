@@ -16,7 +16,9 @@ find_package(image_geometry REQUIRED)  # Might require additional setup
 find_package(visualization_msgs REQUIRED)
 find_package(image_transport REQUIRED)  # Might require additional setup
 find_package(cv_bridge REQUIRED)        # Might require additional setup
+find_package(cv_bridge REQUIRED COMPONENTS cv_bridge)
 find_package(pcl_conversions REQUIRED)
+find_package(yaml-cpp REQUIRED)
 
 # Other dependencies (if available through ROS 2 packages)
 # find_package(pcl_ros2 REQUIRED)  # Might require building ROS 2 wrapper for PCL
@@ -60,8 +62,10 @@ list(APPEND thirdparty_libraries
         ${libnabo_LIBRARIES}
         ${PCL_LIBRARIES}
         ${libpointmatcher_LIBRARIES}
+        ament_index_cpp::ament_index_cpp
+        yaml-cpp
+        cv_bridge::cv_bridge
         )
-
 ##################################################
 # Make the shared library
 ##################################################
@@ -111,13 +115,16 @@ list(APPEND LIBRARY_SOURCES
 file(GLOB_RECURSE LIBRARY_HEADERS "src/*.h")
 add_library(mins_lib SHARED ${LIBRARY_SOURCES} ${LIBRARY_HEADERS})
 ament_target_dependencies(mins_lib ${ament_libraries})
-target_link_libraries(mins_lib ${thirdparty_libraries} ${rclcpp_LIBRARIES})
+target_link_libraries(mins_lib ${thirdparty_libraries})
+
+# ament_target_dependencies(mins_lib cv_bridge)
 
 # target_include_directories(mins_lib PUBLIC src/)
 
 target_include_directories(mins_lib PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
+  /opt/ros/jazzy/include/cv_bridge
 )
 
 install(TARGETS mins_lib

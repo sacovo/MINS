@@ -38,7 +38,7 @@
 #include "update/vicon/ViconTypes.h"
 #include "update/wheel/WheelTypes.h"
 #include "utils/Print_Logger.h"
-#include <cv_bridge/cv_bridge.h>
+#include <cv_bridge/cv_bridge.hpp>
 #include <vector>
 
 using namespace sensor_msgs::msg;

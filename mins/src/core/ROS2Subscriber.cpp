@@ -51,9 +51,8 @@ ROS2Subscriber::ROS2Subscriber(std::shared_ptr<rclcpp::Node> node, std::shared_p
   op = sys->state->op;
 
   // Create imu subscriber (handle legacy ros param info)
-  //  subs.push_back(node->create_subscription<Imu>(op->imu->topic, rclcpp::SensorDataQoS(), std::bind(&ROS2Subscriber::callback_inertial, this, std::placeholders::_1)));
 
-  sub_imu = node->create_subscription<sensor_msgs::msg::Imu>(op->imu->topic, rclcpp::QoS(100), std::bind(&ROS2Subscriber::callback_inertial, this, std::placeholders::_1));
+  sub_imu = node->create_subscription<sensor_msgs::msg::Imu>(op->imu->topic, rclcpp::SensorDataQoS(), std::bind(&ROS2Subscriber::callback_inertial, this, std::placeholders::_1));
   PRINT1("subscribing to imu: %s\n", sub_imu->get_topic_name());
 
   // Create camera subscriber

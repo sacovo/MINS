@@ -55,7 +55,7 @@
 #include "update/lidar/ikd_Tree.h"
 #include "update/vicon/ViconTypes.h"
 #include "utils/Print_Logger.h"
-#include <cv_bridge/cv_bridge.h>
+#include <cv_bridge/cv_bridge.hpp>
 #include <image_transport/image_transport.hpp>
 #include <pcl/common/transforms.h>
 #include <tf2_ros/transform_broadcaster.h>
@@ -70,7 +70,7 @@ ROS2Publisher::ROS2Publisher(shared_ptr<rclcpp::Node> node, shared_ptr<SystemMan
   mTfBr = make_shared<tf2_ros::TransformBroadcaster>(node);
 
   // Basic IMU publish
-  pub_imu_pose = node->create_publisher<geometry_msgs::msg::PoseWithCovarianceStamped>("/mins/imu/pose", 2);
+  pub_imu_pose = node->create_publisher<geometry_msgs::msg::PoseWithCovarianceStamped>("/mins/imu/pose", rclcpp::SensorDataQoS());
   PRINT1("Publishing: %s\n", pub_imu_pose->get_topic_name());
   pub_imu_odom = node->create_publisher<nav_msgs::msg::Odometry>("/mins/imu/odom", 2);
   PRINT1("Publishing: %s\n", pub_imu_odom->get_topic_name());

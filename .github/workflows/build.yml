@@ -31,7 +31,7 @@ jobs:
           ${{ runner.os }}-build-
 
     - name: Build Docker image
-      run: docker build --target builder --tag ros-build:main --load -f Dockerfile_humble_22_04 .
+      run: docker build --target builder --tag ros-build:main --load -f Dockerfile_jazzy_24_04 .
 
 
     - name: Run Docker container to build ROS packages

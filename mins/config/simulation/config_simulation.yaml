@@ -4,8 +4,8 @@ sim:
   seed: 0
   do_perturb: true
   remove_noise: false
-  BSpline_path: "MINS_DATA_DIR/BSplineDataset/UD_Spencer.txt"
-  planes_path: "MINS_DATA_DIR/FloorPlans/UD_Spencer.txt"
+  BSpline_path: "mins_data/BSplineDataset/UD_Spencer.txt"
+  planes_path: "mins_data/FloorPlans/UD_Spencer.txt"
   const_holonomic: true
   const_planar: false
   freq_imu: 200.0
