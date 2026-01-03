@@ -16,6 +16,12 @@ jobs:
     - name: Checkout the repository
       uses: actions/checkout@v3
 
+    - name: Generate release tag
+      id: release_info
+      run: |
+        echo "tag=build-$(git rev-parse --short HEAD)-$(date +%s)" >> $GITHUB_OUTPUT
+        echo "name=Build $(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
       with:
@@ -44,8 +50,8 @@ jobs:
       id: create_release
       uses: actions/create-release@v1
       with:
-        tag_name: latest-build
-        release_name: Latest Build
+        tag_name: ${{ steps.release_info.outputs.tag }}
+        release_name: ${{ steps.release_info.outputs.name }}
         draft: false
         prerelease: false
         generate_release_notes: false
