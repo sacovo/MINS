@@ -10,5 +10,3 @@ source install/setup.bash
 colcon build --paths thirdparty/open_vins/*
 source install/setup.bash
 colcon build --paths {mins,mins_data}
-source install/setup.bash
-colcon build --paths mins_eval
