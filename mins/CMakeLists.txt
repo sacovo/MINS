@@ -23,6 +23,9 @@ find_package(Boost REQUIRED QUIET COMPONENTS system filesystem thread date_time 
 find_package(PCL REQUIRED QUIET)
 find_package(libpointmatcher REQUIRED QUIET)
 find_package(libnabo REQUIRED QUIET)
+find_package(yaml-cpp REQUIRED)
+find_package(ament_index_cpp REQUIRED)
+find_package(cv_bridge REQUIRED)
 
 message(STATUS "OPENCV: " ${OpenCV_VERSION} " | BOOST: " ${Boost_VERSION} " | LIBPOINTMATCHER: " ${libpointmatcher_VERSION})
 message(STATUS "Eigen3: " ${Eigen3_VERSION} " | PCL: " ${PCL_VERSION} "   | LIBNABO: " ${libnabo_VERSION})

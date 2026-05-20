@@ -25,11 +25,13 @@ find_package(yaml-cpp REQUIRED)
 find_package(ov_core REQUIRED)   # Might not be available as a ROS 2 package
 
 add_definitions(-DROS_AVAILABLE=2)
-ament_export_dependencies(rclcpp rosbag2 tf2_ros std_msgs geometry_msgs sensor_msgs nav_msgs std_srvs image_geometry visualization_msgs image_transport cv_bridge ov_core pcl_conversions)
+ament_export_dependencies(ament_index_cpp rclcpp rosbag2
+ tf2_ros std_msgs geometry_msgs sensor_msgs nav_msgs std_srvs image_geometry visualization_msgs image_transport cv_bridge ov_core pcl_conversions)
 # ament_export_include_directories(src/)
 ament_export_libraries(mins_lib)
 
 list(APPEND ament_libraries
+        ament_index_cpp
         rclcpp
         rosbag2
         tf2_ros

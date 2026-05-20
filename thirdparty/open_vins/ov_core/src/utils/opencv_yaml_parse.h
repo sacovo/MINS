@@ -360,7 +360,7 @@ private:
     if (!node_found(file_node, node_name)) {
       if (required) {
         PRINT_WARNING(YELLOW "the node %s of type [%s] was not found...\n" RESET, node_name.c_str(), typeid(node_result).name());
-        all_params_found_successfully = false;
+        PRINT_WARNING(YELLOW "Flagging failure at %s:%d\n" RESET, __FILE__, __LINE__); all_params_found_successfully = false;
       } else {
         PRINT_DEBUG("the node %s of type [%s] was not found (not required)...\n", node_name.c_str(), typeid(node_result).name());
       }
@@ -374,7 +374,7 @@ private:
       if (required) {
         PRINT_WARNING(YELLOW "unable to parse %s node of type [%s] in the config file!\n" RESET, node_name.c_str(),
                       typeid(node_result).name());
-        all_params_found_successfully = false;
+        PRINT_WARNING(YELLOW "Flagging failure at %s:%d\n" RESET, __FILE__, __LINE__); all_params_found_successfully = false;
       } else {
         PRINT_DEBUG("unable to parse %s node of type [%s] in the config file (not required)\n", node_name.c_str(),
                     typeid(node_result).name());
@@ -395,7 +395,7 @@ private:
     if (!node_found(file_node, node_name)) {
       if (required) {
         PRINT_WARNING(YELLOW "the node %s of type [%s] was not found...\n" RESET, node_name.c_str(), typeid(node_result).name());
-        all_params_found_successfully = false;
+        PRINT_WARNING(YELLOW "Flagging failure at %s:%d\n" RESET, __FILE__, __LINE__); all_params_found_successfully = false;
       } else {
         PRINT_DEBUG("the node %s of type [%s] was not found (not required)...\n", node_name.c_str(), typeid(node_result).name());
       }
@@ -424,13 +424,13 @@ private:
         node_result = false;
       } else {
         PRINT_WARNING(YELLOW "the node %s has an invalid boolean type of [%s]\n" RESET, node_name.c_str(), value.c_str());
-        all_params_found_successfully = false;
+        PRINT_WARNING(YELLOW "Flagging failure at %s:%d\n" RESET, __FILE__, __LINE__); all_params_found_successfully = false;
       }
     } catch (...) {
       if (required) {
         PRINT_WARNING(YELLOW "unable to parse %s node of type [%s] in the config file!\n" RESET, node_name.c_str(),
                       typeid(node_result).name());
-        all_params_found_successfully = false;
+        PRINT_WARNING(YELLOW "Flagging failure at %s:%d\n" RESET, __FILE__, __LINE__); all_params_found_successfully = false;
       } else {
         PRINT_DEBUG("unable to parse %s node of type [%s] in the config file (not required)\n", node_name.c_str(),
                     typeid(node_result).name());
@@ -451,7 +451,7 @@ private:
     if (!node_found(file_node, node_name)) {
       if (required) {
         PRINT_WARNING(YELLOW "the node %s of type [%s] was not found...\n" RESET, node_name.c_str(), typeid(node_result).name());
-        all_params_found_successfully = false;
+        PRINT_WARNING(YELLOW "Flagging failure at %s:%d\n" RESET, __FILE__, __LINE__); all_params_found_successfully = false;
       } else {
         PRINT_DEBUG("the node %s of type [%s] was not found (not required)...\n", node_name.c_str(), typeid(node_result).name());
       }
@@ -470,7 +470,7 @@ private:
       if (required) {
         PRINT_WARNING(YELLOW "unable to parse %s node of type [%s] in the config file!\n" RESET, node_name.c_str(),
                       typeid(node_result).name());
-        all_params_found_successfully = false;
+        PRINT_WARNING(YELLOW "Flagging failure at %s:%d\n" RESET, __FILE__, __LINE__); all_params_found_successfully = false;
       } else {
         PRINT_DEBUG("unable to parse %s node of type [%s] in the config file (not required)\n", node_name.c_str(),
                     typeid(node_result).name());
@@ -501,7 +501,7 @@ private:
     if (!node_found(file_node, node_name_local)) {
       if (required) {
         PRINT_WARNING(YELLOW "the node %s of type [%s] was not found...\n" RESET, node_name_local.c_str(), typeid(node_result).name());
-        all_params_found_successfully = false;
+        PRINT_WARNING(YELLOW "Flagging failure at %s:%d\n" RESET, __FILE__, __LINE__); all_params_found_successfully = false;
       } else {
         PRINT_DEBUG("the node %s of type [%s] was not found (not required)...\n", node_name_local.c_str(), typeid(node_result).name());
       }
@@ -520,7 +520,7 @@ private:
       if (required) {
         PRINT_WARNING(YELLOW "unable to parse %s node of type [%s] in the config file!\n" RESET, node_name.c_str(),
                       typeid(node_result).name());
-        all_params_found_successfully = false;
+        PRINT_WARNING(YELLOW "Flagging failure at %s:%d\n" RESET, __FILE__, __LINE__); all_params_found_successfully = false;
       } else {
         PRINT_DEBUG("unable to parse %s node of type [%s] in the config file (not required)\n", node_name.c_str(),
                     typeid(node_result).name());
@@ -557,7 +557,7 @@ private:
     } catch (...) {
       PRINT_WARNING(YELLOW "unable to parse %s node of type [%s] in the config file!\n" RESET, node_name.c_str(),
                     typeid(node_result).name());
-      all_params_found_successfully = false;
+      PRINT_WARNING(YELLOW "Flagging failure at %s:%d\n" RESET, __FILE__, __LINE__); all_params_found_successfully = false;
     }
   }
 
@@ -602,7 +602,7 @@ private:
     // Check that we have the requested node
     if (!node_found(config_external->root(), sensor_name)) {
       PRINT_WARNING(YELLOW "the sensor %s of type [%s] was not found...\n" RESET, sensor_name.c_str(), typeid(node_result).name());
-      all_params_found_successfully = false;
+      PRINT_WARNING(YELLOW "Flagging failure at %s:%d\n" RESET, __FILE__, __LINE__); all_params_found_successfully = false;
       return;
     }
 
@@ -612,7 +612,7 @@ private:
     } catch (...) {
       PRINT_WARNING(YELLOW "unable to parse %s node of type [%s] in [%s] in the external %s config file!\n" RESET, node_name.c_str(),
                     typeid(node_result).name(), sensor_name.c_str(), external_node_name.c_str());
-      all_params_found_successfully = false;
+      PRINT_WARNING(YELLOW "Flagging failure at %s:%d\n" RESET, __FILE__, __LINE__); all_params_found_successfully = false;
     }
   }
 };

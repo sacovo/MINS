@@ -30,6 +30,7 @@
 
 #include <cstdint>
 #include <string>
+#include <cstdint>
 
 namespace mins {
 /// Wrapping function of ov_core::Printer does more similar things and save log
